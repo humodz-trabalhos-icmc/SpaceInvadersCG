@@ -1,10 +1,16 @@
 # SpaceInvadersCG
 
-Trabalho 2 CG 2017
+## Integrantes
+
+* Bruno Henrique Rasteiro, 9292910
+* Hugo Moraes Dzin, 8532186
+* Marcos Vinícius Junqueira, 8922393
+* Raul Zaninetti Rosa, 8517310
 
 ## Especificação
 
 [Link Dropbox](https://www.dropbox.com/s/la0asrjfm3857kt/SCC0250-201701-slides-02-SavePoints.pptx?dl=0)
+
 [Link Site CG](https://sites.google.com/site/computacaograficaicmc2017t1/aula-4-recuperacao-da-informacao-save-points)
 
 > Faça uma aplicação interativa com a API OpenGL que represente um game do estilo "**Space Invaders** (Tomohiro Nishikado - 1978)".

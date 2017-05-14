@@ -17,7 +17,7 @@
 >
 > A aplicação deve tornar possível o controle de uma "nave" pelo usuário. De forma que sua movimentação seja ajustada de acordo com as setas do teclado (ou sistema AWSD). Além disso, a nave deve disparar um tiro quaando o usuário pressionar determinada tecla (barra de espaço, por exemplo).
 >
-> A aplicação também deve respresentar uma matriz de naves invasoras. Essa matriz deve ter, pelo menos, 5 linhas e 5 colunas. De forma que deve haver pelo menos treês estilos (_designs_) diferentes de nave.
+> A aplicação também deve representar uma matriz de naves invasoras. Essa matriz deve ter, pelo menos, 5 linhas e 5 colunas. De forma que deve haver pelo menos treês estilos (_designs_) diferentes de nave.
 >
 > * As naves invasoras também devem atirar eventualmente.
 > * A matriz de naes invasoras deve se aproximar da base defensora eventualmente.

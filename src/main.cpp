@@ -1,6 +1,8 @@
 #include <iostream>
 #include <GL/glut.h>
 
+#include "Controller.h"
+
 void onDisplay(void)
 {
 	glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -26,16 +28,6 @@ void onDisplay(void)
 	glutSwapBuffers();
 }
 
-void onKeyPress(unsigned char key, int mouse_x, int mouse_y)
-{
-
-}
-
-void onSpecialKeyPress(int key, int x, int y)
-{
-
-}
-
 void onTimerTick(int step)
 {
 	glutTimerFunc(1000 / 30, onTimerTick, step + 1);
@@ -52,9 +44,8 @@ int main(int argc, char **argv)
 	glutCreateWindow("Rosinha Invaders");
 
 	// Register callback functions
+	Controller::registerCallbacks();
 	glutDisplayFunc(onDisplay);
-	glutKeyboardFunc(onKeyPress);
-	glutSpecialFunc(onSpecialKeyPress);
 	glutTimerFunc(0, onTimerTick, 0);
 
 	glutMainLoop();

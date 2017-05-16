@@ -2,6 +2,7 @@
 #include <GL/glut.h>
 
 #include "Controller.h"
+#include "CollisionBox.h"
 
 void onDisplay(void)
 {
@@ -10,20 +11,16 @@ void onDisplay(void)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(-3, 3, -2, 2);
+	gluOrtho2D(0, 600, 0, 400);
 
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
+	// Testing box rendering
+	CollisionBox box1({100, 100}, 30, 40);
+	CollisionBox box2({350, 200}, 90, 90);
+	CollisionBox box3({400, 150}, 60, 20);
 
-	glBegin(GL_QUADS);
-	{
-		glColor3f(1.0, 1.0, 1.0);
-		glVertex2f( 1.0,  1.0);
-		glVertex2f(-1.0,  1.0);
-		glVertex2f(-1.0, -1.0);
-		glVertex2f( 1.0, -1.0);
-	}
-	glEnd();
+	box1.renderOutline();
+	box2.renderOutline();
+	box3.renderOutline();
 
 	glutSwapBuffers();
 }

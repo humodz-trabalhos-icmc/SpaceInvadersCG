@@ -16,6 +16,7 @@ void Controller::onKeyPress(unsigned char ascii, int x, int y)
 	// Suppress "unused variable" warnings
 	(void) x;
 	(void) y;
+	// Mark key as pressed (true)
 	gCtrl.setKeyPressed(ascii, true);
 }
 
@@ -24,10 +25,9 @@ void Controller::onKeyUp(unsigned char ascii, int x, int y)
 	// Suppress "unused variable" warnings
 	(void) x;
 	(void) y;
+	// Mark key as released (false)
 	gCtrl.setKeyPressed(ascii, false);
 }
-
-#include <iostream>
 
 void Controller::setKeyPressed(unsigned char ascii, bool state)
 {
@@ -46,6 +46,5 @@ void Controller::setKeyPressed(unsigned char ascii, bool state)
 			break;
 	}
 
-	std::cout << ascii << (state ? ": DOWN" : ": UP") << std::endl;
 	is_down[key] = state;
 }

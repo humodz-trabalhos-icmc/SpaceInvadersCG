@@ -1,10 +1,14 @@
 #include <iostream>
 #include <GL/glut.h>
-
 #include "Controller.h"
+#include "Ship.h"
+#include "Shot.h"
+using namespace std;
+
+Ship ship;
 
 void onDisplay(void)
-{
+{	
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 
@@ -15,15 +19,13 @@ void onDisplay(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	glBegin(GL_QUADS);
-	{
-		glColor3f(1.0, 1.0, 1.0);
-		glVertex2f( 1.0,  1.0);
-		glVertex2f(-1.0,  1.0);
-		glVertex2f(-1.0, -1.0);
-		glVertex2f( 1.0, -1.0);
-	}
-	glEnd();
+	ship.draw();
+	gCtrl.shotPlayer(ship.getPos());
+	//gCtrl.shotEnemys();
+	gCtrl.updateShots();
+
+	cout << ship.getPos() << endl; 
+
 
 	glutSwapBuffers();
 }

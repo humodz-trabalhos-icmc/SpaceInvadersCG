@@ -18,6 +18,9 @@ public:
 	void reset(Key key)  { is_down[key] = false; }
 	bool isDown(Key key) { return  is_down[key]; }
 	bool isUp(Key key)   { return !is_down[key]; }
+	void shotPlayer(double x);
+	void updateShots();
+
 private:
 	static void onKeyPress(unsigned char ascii, int x, int y);
 	static void onKeyUp(unsigned char ascii, int x, int y);

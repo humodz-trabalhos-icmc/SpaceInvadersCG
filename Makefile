@@ -19,8 +19,8 @@ SOURCES = $(wildcard src/*.cpp)
 
 .PHONY: all
 all:
-	mkdir -p bin/
-	$(CC) $(SOURCES) -Wall -Wextra -Isrc -o bin/$(TARGET) $(LIB_FLAGS)
+	@mkdir -p bin/
+	$(CC) $(SOURCES) -Wall -Wextra -Isrc -std=c++11 -o bin/$(TARGET) $(LIB_FLAGS)
 ifeq ($(OS),Windows_NT)
 	cp deps_windows/bin/x64/freeglut.dll bin/
 endif

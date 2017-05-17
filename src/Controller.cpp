@@ -1,7 +1,11 @@
 #include "Controller.h"
+#include "Shot.h"
+#include "Ship.h"
 #include <GL/glut.h>
+#include <stdio.h>
 
 Controller gCtrl;
+Shot shotVec[6];
 
 void Controller::registerCallbacks()
 {
@@ -48,4 +52,18 @@ void Controller::setKeyPressed(unsigned char ascii, bool state)
 
 	std::cout << ascii << (state ? ": DOWN" : ": UP") << std::endl;
 	is_down[key] = state;
+}
+
+void Controller::shotPlayer(double x){
+	if (gCtrl.isDown(KEY_FIRE) && !shotVec[0].getState()){
+		shotVec[0].setState(true);
+		shotVec[0].setPos(x - 0.25, -1.5);
+	}
+}
+
+void Controller::updateShots(){
+	int i;
+
+	for (i=0; i < 6; i++)
+		shotVec[i].draw();
 }

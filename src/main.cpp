@@ -19,13 +19,14 @@ void onDisplay(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+	// redesenha a nave
 	ship.draw();
+	// prepara um novo tiro do jogador
 	gCtrl.shotPlayer(ship.getPos());
+	// prepara novos tiros pelos inimigos
 	//gCtrl.shotEnemys();
+	// redesenha todos os tiros da tela
 	gCtrl.updateShots();
-
-	cout << ship.getPos() << endl; 
-
 
 	glutSwapBuffers();
 }

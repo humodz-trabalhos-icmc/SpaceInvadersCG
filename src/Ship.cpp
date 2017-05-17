@@ -30,9 +30,10 @@ void Ship::updateLive(){
 }
 
 void Ship::draw(){
-
+	// atualiza posição de acordo com a tecla pressionada 
 	this->updatePos();
-
+	
+	// desenha nave
 	glBegin(GL_QUADS);
 		glColor3f(1.0, 1.0, 1.0);
 		glVertex2f( this->pos_x,	 -1.5);

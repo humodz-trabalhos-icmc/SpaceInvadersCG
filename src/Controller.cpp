@@ -31,8 +31,6 @@ void Controller::onKeyUp(unsigned char ascii, int x, int y)
 	gCtrl.setKeyPressed(ascii, false);
 }
 
-#include <iostream>
-
 void Controller::setKeyPressed(unsigned char ascii, bool state)
 {
 	Key key = KEY_NONE;
@@ -52,10 +50,10 @@ void Controller::setKeyPressed(unsigned char ascii, bool state)
 
 	is_down[key] = state;
 }
-
-// prepara um novo tiro do jogador 
+/*
+// prepara um novo tiro do jogador
 void Controller::shotPlayer(double x){
-	
+
 	if (gCtrl.isDown(KEY_FIRE) && !shotVec[0].getState()){
 		shotVec[0].setState(true);
 		shotVec[0].setPos(x - 0.25, -1.5);
@@ -68,4 +66,4 @@ void Controller::updateShots(){
 
 	for (i=0; i < 6; i++)
 		shotVec[i].draw();
-}
+}*/

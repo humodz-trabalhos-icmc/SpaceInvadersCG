@@ -20,9 +20,7 @@ void onDisplay(void)
 	glLoadIdentity();
 
 
-	// colocar funcoes de desenho aqui
-
-	// redesenha a nave
+	// colocar todas as funcoes de .draw() aqui:
 	player.draw();
 
 
@@ -31,6 +29,7 @@ void onDisplay(void)
 
 void onTimerTick(int step)
 {
+	// colocar todas as funcoes de .update() aqui:
 	player.update();
 
 	glutTimerFunc(1000 / 30, onTimerTick, step + 1);

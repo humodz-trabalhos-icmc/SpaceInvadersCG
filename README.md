@@ -15,7 +15,7 @@
 
 > Faça uma aplicação interativa com a API OpenGL que represente um game do estilo "**Space Invaders** (Tomohiro Nishikado - 1978)".
 >
-> A aplicação deve tornar possível o controle de uma "nave" pelo usuário. De forma que sua movimentação seja ajustada de acordo com as setas do teclado (ou sistema AWSD). Além disso, a nave deve disparar um tiro quaando o usuário pressionar determinada tecla (barra de espaço, por exemplo).
+> A aplicação deve tornar possível o controle de uma "nave" pelo usuário. De forma que sua movimentação seja ajustada de acordo com as setas do teclado (ou sistema AWSD). Além disso, a nave deve disparar um tiro quando o usuário pressionar determinada tecla (barra de espaço, por exemplo).
 >
 > A aplicação também deve representar uma matriz de naves invasoras. Essa matriz deve ter, pelo menos, 5 linhas e 5 colunas. De forma que deve haver pelo menos treês estilos (_designs_) diferentes de nave.
 >

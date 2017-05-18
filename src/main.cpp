@@ -2,7 +2,12 @@
 #include <GL/glut.h>
 
 #include "Controller.h"
-#include "CollisionBox.h"
+#include "Ship.h"
+#include "Shot.h"
+
+using namespace std;
+
+Ship player;
 
 void onDisplay(void)
 {
@@ -11,22 +16,19 @@ void onDisplay(void)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(0, 600, 0, 400);
+	gluOrtho2D(-3, 3, -2, 2);
 
-	// Testing box rendering
-	CollisionBox box1({100, 100}, 30, 40);
-	CollisionBox box2({350, 200}, 90, 90);
-	CollisionBox box3({400, 150}, 60, 20);
-
-	box1.renderOutline();
-	box2.renderOutline();
-	box3.renderOutline();
+	// colocar todas as funcoes de .draw() aqui:
+	player.draw();
 
 	glutSwapBuffers();
 }
 
 void onTimerTick(int step)
 {
+	// colocar todas as funcoes de .update() aqui:
+	player.update();
+
 	glutTimerFunc(1000 / 30, onTimerTick, step + 1);
 	glutPostRedisplay();
 }

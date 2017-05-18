@@ -21,6 +21,9 @@ public:
 	// Returns true if the key is pressed/released
 	bool isDown(Key key) { return  is_down[key]; }
 	bool isUp(Key key)   { return !is_down[key]; }
+	/*void shotPlayer(double x);
+	void updateShots();*/
+
 private:
 	// Event handlers
 	static void onKeyPress(unsigned char ascii, int x, int y);

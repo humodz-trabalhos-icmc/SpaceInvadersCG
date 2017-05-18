@@ -1,6 +1,7 @@
 #include <iostream>
 #include <GL/glut.h>
 
+#include "globals.h"
 #include "Controller.h"
 #include "Ship.h"
 #include "Shot.h"
@@ -16,7 +17,7 @@ void onDisplay(void)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(-3, 3, -2, 2);
+	gluOrtho2D(ORTHO_LEFT, ORTHO_RIGHT, ORTHO_DOWN, ORTHO_UP);
 
 	// colocar todas as funcoes de .draw() aqui:
 	player.draw();
@@ -29,7 +30,7 @@ void onTimerTick(int step)
 	// colocar todas as funcoes de .update() aqui:
 	player.update();
 
-	glutTimerFunc(1000 / 30, onTimerTick, step + 1);
+	glutTimerFunc(FRAME_RATE, onTimerTick, step + 1);
 	glutPostRedisplay();
 }
 
@@ -38,8 +39,8 @@ int main(int argc, char **argv)
 	// Initialize window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-	glutInitWindowSize(600, 400);
-	glutInitWindowPosition(300, 100);
+	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+	glutInitWindowPosition(400, 150);
 	glutCreateWindow("Rosinha Invaders");
 
 	// Register callback functions

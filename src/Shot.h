@@ -1,3 +1,6 @@
+#ifndef SHOT_H
+#define SHOT_H
+
 class Shot {
 
 public:
@@ -14,3 +17,5 @@ private:
 	double pos_x;
 	double pos_y;
 };
+
+#endif

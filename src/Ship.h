@@ -1,3 +1,6 @@
+#ifndef SHIP_H
+#define SHIP_H
+
 class Ship {
 
 public:
@@ -11,3 +14,5 @@ private:
 	double pos_x = 0.25;
 	double pos_y;
 };
+
+#endif

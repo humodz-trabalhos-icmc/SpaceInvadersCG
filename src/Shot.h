@@ -1,21 +1,27 @@
 #ifndef SHOT_H
 #define SHOT_H
 
-class Shot {
+enum ShotType { PLAYER_SHOT, ALIEN_SHOT };
 
+class Shot
+{
 public:
-	//Shot(int shooter, double pos_x, double pos_y);
-	void updatePos();
+	Shot() { }
+	Shot(ShotType t) { type = t; }
+
+	void update();
 	void draw();
-	void setPos(double x, double y);
-	void setState(bool state)	{ this->state = state; }
-	bool getState()				{ return state; }
+
+	bool isActive()   { return is_active; }
+	void deactivate() { is_active = false; }
+	// activate the shot and place it at (x, y)
+	void activate(double x, double y);
 
 private:
-	bool state = false;
-	int shooter;
-	double pos_x;
-	double pos_y;
+	ShotType type  = ALIEN_SHOT;
+	bool is_active = false;
+	double pos_x   = 0;
+	double pos_y   = 0;
 };
 
 #endif

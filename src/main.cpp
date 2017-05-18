@@ -30,7 +30,7 @@ void onTimerTick(int step)
 	// colocar todas as funcoes de .update() aqui:
 	player.update();
 
-	glutTimerFunc(FRAME_RATE, onTimerTick, step + 1);
+	glutTimerFunc(FRAME_TIME_MS, onTimerTick, step + 1);
 	glutPostRedisplay();
 }
 

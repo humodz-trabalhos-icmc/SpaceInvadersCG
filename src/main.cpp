@@ -5,10 +5,10 @@
 #include "Shot.h"
 using namespace std;
 
-Ship ship;
+Ship player;
 
 void onDisplay(void)
-{	
+{
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 
@@ -19,20 +19,20 @@ void onDisplay(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+
+	// colocar funcoes de desenho aqui
+
 	// redesenha a nave
-	ship.draw();
-	// prepara um novo tiro do jogador
-	gCtrl.shotPlayer(ship.getPos());
-	// prepara novos tiros pelos inimigos
-	//gCtrl.shotEnemys();
-	// redesenha todos os tiros da tela
-	gCtrl.updateShots();
+	player.draw();
+
 
 	glutSwapBuffers();
 }
 
 void onTimerTick(int step)
 {
+	player.update();
+
 	glutTimerFunc(1000 / 30, onTimerTick, step + 1);
 	glutPostRedisplay();
 }

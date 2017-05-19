@@ -39,8 +39,10 @@ void Ship::checkControls(ShotManager* shotManager){
 			this->pos_x = ORTHO_RIGHT;
 	}
 
-	if(gCtrl.isDown(KEY_FIRE))
+	if(gCtrl.isDown(KEY_FIRE)){
 		shotManager->newShot(true, this->pos_x - SHIP_PLAYER_WIDTH/2, this->pos_y + SHIP_PLAYER_HEIGHT);
+		gCtrl.reset(KEY_FIRE);
+	}
 }
 
 void Ship::checkCollision(){

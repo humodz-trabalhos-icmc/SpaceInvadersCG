@@ -8,7 +8,7 @@
 void ShotManager::newShot(bool player, double x, double y){
 	int i;
 	Shot sPlayer(PLAYER_SHOT);
-	Shot sAlien;	
+	Shot sAlien;
 
 	// ativa possiveis tiros a serem inseridos
 	sPlayer.activate(x, y);
@@ -19,13 +19,14 @@ void ShotManager::newShot(bool player, double x, double y){
 		// cria tiro (insere no vetor)
 		if (this->shotPlayer.size() < PLAYER_SHOT_COUNT)
 			this->shotPlayer.push_back(sPlayer);
-
 		// ativa tiro
 		else
 			// procura tiro desativado
-			for (i=0; i < PLAYER_SHOT_COUNT; i++)
-				if (!this->shotPlayer[i].isActive())
+			for (i=0; i < PLAYER_SHOT_COUNT; i++) 
+				if (!this->shotPlayer[i].isActive()){
 					this->shotPlayer[i].activate(x, y);
+					break;
+				}
 	}
 	// tiros dos aliens
 	else {

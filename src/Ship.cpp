@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 
+#include "globals.h"
 #include "Ship.h"
 #include "Controller.h"
 
@@ -10,32 +11,60 @@ void Ship::update()
 	checkCollision();
 }
 
-void Ship::draw(){
-	// desenha nave
+void Ship::draw()
+{
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glTranslatef(pos_x, pos_y, 0.0);
+
+	GLfloat s = PLAYER_WIDTH / 2;
+	glScalef(s, s, s);
+
+	// the rest of the function uses normalized coordinates -1 .. 1
+
+	// collision box
 	glBegin(GL_QUADS);
+	{
 		glColor3f(1.0, 1.0, 1.0);
-		glVertex2f( this->pos_x,	 -1.5);
-		glVertex2f( this->pos_x-0.5, -1.5);
-		glVertex2f( this->pos_x-0.5, -2.0);
-		glVertex2f( this->pos_x,	 -2.0);
+
+		glVertex2f( 1, 1);
+		glVertex2f(-1, 1);
+		glVertex2f(-1,-1);
+		glVertex2f( 1,-1);
+
+		glColor3f(0.5, 0.5, 0.5);
+
+
+	}
 	glEnd();
+
+	glBegin(GL_TRIANGLES);
+	{
+		glVertex2f(0.0, 0.0);
+		glVertex2f(-1.2, -1.0);
+		glVertex2f( 1.2, -1.0);
+
+
+	}
+	glEnd();
+
 }
 
 void Ship::checkControls(){
 
 	// move left
 	if (gCtrl.isDown(KEY_LEFT)){
-		this->pos_x -= 0.1;
+		this->pos_x -= PLAYER_SPEED_MS * FRAME_TIME_MS;
 
-		if (this->pos_x < -2.5)
-			this->pos_x = -2.5;
+		if (this->pos_x < ORTHO_LEFT)
+			this->pos_x = ORTHO_LEFT;
 	}
 	//move right
 	else if (gCtrl.isDown(KEY_RIGHT)){
-		this->pos_x += 0.1;
+		this->pos_x += PLAYER_SPEED_MS * FRAME_TIME_MS;
 
-		if (this->pos_x > 3)
-			this->pos_x = 3;
+		if (this->pos_x > ORTHO_RIGHT)
+			this->pos_x = ORTHO_RIGHT;
 	}
 
 	if(gCtrl.isDown(KEY_FIRE))

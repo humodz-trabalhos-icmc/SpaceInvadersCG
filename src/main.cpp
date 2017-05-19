@@ -5,10 +5,12 @@
 #include "Controller.h"
 #include "Ship.h"
 #include "Shot.h"
+#include "ShotManager.h"
 
 using namespace std;
 
 Ship player;
+ShotManager shotManager;
 
 void onDisplay(void)
 {
@@ -21,6 +23,7 @@ void onDisplay(void)
 
 	// colocar todas as funcoes de .draw() aqui:
 	player.draw();
+	shotManager.draw();
 
 	glutSwapBuffers();
 }
@@ -28,7 +31,8 @@ void onDisplay(void)
 void onTimerTick(int step)
 {
 	// colocar todas as funcoes de .update() aqui:
-	player.update();
+	player.update(&shotManager);
+	shotManager.update();
 
 	glutTimerFunc(FRAME_TIME_MS, onTimerTick, step + 1);
 	glutPostRedisplay();

@@ -1,11 +1,11 @@
+#include <GL/glut.h>
+#include <ctype.h>
+
 #include "Controller.h"
 #include "Shot.h"
 #include "Ship.h"
-#include <GL/glut.h>
-#include <stdio.h>
 
 Controller gCtrl;
-Shot shotVec[6];
 
 void Controller::registerCallbacks()
 {
@@ -52,20 +52,3 @@ void Controller::setKeyPressed(unsigned char ascii, bool state)
 
 	is_down[key] = state;
 }
-/*
-// prepara um novo tiro do jogador
-void Controller::shotPlayer(double x){
-
-	if (gCtrl.isDown(KEY_FIRE) && !shotVec[0].getState()){
-		shotVec[0].setState(true);
-		shotVec[0].setPos(x - 0.25, -1.5);
-	}
-}
-
-// redesenha todos os tiros de acordo com suas novas coordenadas
-void Controller::updateShots(){
-	int i;
-
-	for (i=0; i < 6; i++)
-		shotVec[i].draw();
-}*/

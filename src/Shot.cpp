@@ -2,45 +2,50 @@
 #include <GL/glut.h>
 #include <iostream>
 
+#include <iostream>
+using namespace std;
+
 // atualiza a posição do tiro
 void Shot::update() {
+	
 	if(isActive()) {
 		// move up
 		if (this->type == PLAYER_SHOT) {
-			this->pos_y += 0.2;
-			if (this->pos_y > 2.1)
-				deactivate();
+			this->pos_y += 10;
+			if (this->pos_y > 400)
+				this->deactivate();
 		}
 		// move down
-		else
-			this->pos_y -= 0.1;
+		else {
+			this->pos_y -= 10;
+			if (this->pos_y < 0)
+				this->deactivate();
+		}
 	}
 }
 
 // desenha tiro na tela
 void Shot::draw() {
-	//std::cout << this->state << std::endl;
+
 	// só desenha tiro ativo
 	if (isActive()) {
 		// desenha tiro do jogador
 		if (this->type == PLAYER_SHOT) {
-			glLineWidth(2.5);
 			glColor3f(1.0, 1.0, 1.0);
 			glBegin(GL_LINES);
 			{
 				glVertex3f(this->pos_x, this->pos_y, 0.0);
-				glVertex3f(this->pos_x, this->pos_y - 0.1, 0.0);
+				glVertex3f(this->pos_x, this->pos_y - 5, 0.0);
 			}
 			glEnd();
 		}
 		// desenha tiro do inimigo
 		else { // this->type == ALIEN_SHOT
-			glLineWidth(2.5);
 			glColor3f(1.0, 1.0, 1.0);
 			glBegin(GL_LINES);
 			{
-				glVertex3f(this->pos_x - 0.25, this->pos_y, 0.0);
-				glVertex3f(this->pos_x - 0.25, this->pos_y + 0.1, 0.0);
+				glVertex3f(this->pos_x, this->pos_y, 0.0);
+				glVertex3f(this->pos_x, this->pos_y + 5, 0.0);
 			}
 			glEnd();
 		}

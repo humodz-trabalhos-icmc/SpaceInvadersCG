@@ -9,9 +9,13 @@
 #define ORTHO_DOWN  0
 #define ORTHO_UP    400
 
+#define PLAYER_SHOT_COUNT 1
 #define ALIEN_SHOT_COUNT 5
 
 #define FRAME_RATE 30
 #define FRAME_TIME_MS (1000 / FRAME_RATE)
+
+#define SHIP_PLAYER_WIDTH 50
+#define SHIP_PLAYER_HEIGHT 50
 
 #endif

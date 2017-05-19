@@ -1,9 +1,7 @@
-#include "Shot.h"
 #include <GL/glut.h>
-#include <iostream>
 
-#include <iostream>
-using namespace std;
+#include "Shot.h"
+#include "globals.h"
 
 // atualiza a posição do tiro
 void Shot::update() {
@@ -12,7 +10,7 @@ void Shot::update() {
 		// move up
 		if (this->type == PLAYER_SHOT) {
 			this->pos_y += 10;
-			if (this->pos_y > 400)
+			if (this->pos_y > ORTHO_UP)
 				this->deactivate();
 		}
 		// move down

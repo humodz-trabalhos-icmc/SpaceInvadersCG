@@ -1,10 +1,9 @@
+#include <algorithm> 
+#include <iostream>
+
 #include "ShotManager.h"
 #include "Shot.h"
 #include "globals.h"
-#include <algorithm> 
-
-#include <iostream>
-using namespace std;
 
 void ShotManager::newShot(bool player, double x, double y){
 	int i;
@@ -12,7 +11,7 @@ void ShotManager::newShot(bool player, double x, double y){
 	Shot sAlien;	
 
 	// ativa possiveis tiros a serem inseridos
-	sPlayer.activate(x - (SHIP_PLAYER_WIDTH/2) , y + SHIP_PLAYER_HEIGHT);
+	sPlayer.activate(x, y);
 	sAlien.activate(x, y);
 	
 	// tiros do jogador
@@ -26,7 +25,7 @@ void ShotManager::newShot(bool player, double x, double y){
 			// procura tiro desativado
 			for (i=0; i < PLAYER_SHOT_COUNT; i++)
 				if (!this->shotPlayer[i].isActive())
-					this->shotPlayer[i].activate(x - (SHIP_PLAYER_WIDTH/2) , y + SHIP_PLAYER_HEIGHT);
+					this->shotPlayer[i].activate(x, y);
 	}
 	// tiros dos aliens
 	else {

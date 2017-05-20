@@ -10,7 +10,6 @@ void ShotManager::newShot(ShotType shot_type, float x, float y){
 	Shot sPlayer(PLAYER_SHOT);
 	Shot sAlien(ALIEN_SHOT);
 
-	std::cout << "atirando" << std::endl;
 	// ativa possiveis tiros a serem inseridos
 	sPlayer.activate(x, y);
 	sAlien.activate(x, y);

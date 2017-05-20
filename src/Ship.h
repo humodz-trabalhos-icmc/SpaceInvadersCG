@@ -19,7 +19,7 @@ private:
 
 	int lives = 3;
 	float pos_x = ORTHO_WIDTH / 2;
-	float pos_y = PLAYER_HEIGHT / 2;
+	float pos_y = 5 + PLAYER_HEIGHT / 2;
 };
 
 #endif

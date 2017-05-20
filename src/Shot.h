@@ -15,13 +15,13 @@ public:
 	bool isActive()   { return is_active; }
 	void deactivate() { is_active = false; }
 	// activate the shot and place it at (x, y)
-	void activate(double x, double y);
+	void activate(float x, float y);
 
 private:
 	ShotType type  = ALIEN_SHOT;
 	bool is_active = false;
-	double pos_x   = 0;
-	double pos_y   = 0;
+	float pos_x   = 0;
+	float pos_y   = 0;
 };
 
 #endif

@@ -5,7 +5,7 @@
 
 // atualiza a posição do tiro
 void Shot::update() {
-	
+
 	if(isActive()) {
 		// move up
 		if (this->type == PLAYER_SHOT) {
@@ -50,7 +50,7 @@ void Shot::draw() {
 	}
 }
 
-void Shot::activate(double x, double y) {
+void Shot::activate(float x, float y) {
 	is_active = true;
 	this->pos_x = x;
 	this->pos_y = y;

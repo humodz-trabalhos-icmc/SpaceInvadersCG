@@ -9,7 +9,7 @@ using namespace std;
 class ShotManager {
 
 public:
-	void newShot(bool player, double x, double y);
+	void newShot(ShotType shot_type, float x, float y);
 	void draw();
 	void update();
 

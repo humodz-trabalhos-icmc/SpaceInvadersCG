@@ -21,7 +21,10 @@ void onDisplay(void)
 	glLoadIdentity();
 	gluOrtho2D(ORTHO_LEFT, ORTHO_RIGHT, ORTHO_DOWN, ORTHO_UP);
 
-	// colocar todas as funcoes de .draw() aqui:
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	// Colocar todas as funcoes de .draw() aqui:
 	player.draw();
 	shotManager.draw();
 
@@ -30,7 +33,7 @@ void onDisplay(void)
 
 void onTimerTick(int step)
 {
-	// colocar todas as funcoes de .update() aqui:
+	// Colocar todas as funcoes de .update() aqui:
 	player.update(&shotManager);
 	shotManager.update();
 

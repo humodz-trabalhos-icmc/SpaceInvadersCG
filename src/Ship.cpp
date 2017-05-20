@@ -11,35 +11,73 @@ void Ship::update(ShotManager* shotManager)
 	checkCollision();
 }
 
-void Ship::draw(){
-	// desenha nave
+void Ship::draw()
+{
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glTranslatef(pos_x, pos_y, 0.0);
+
+	GLfloat s = PLAYER_WIDTH / 2;
+	glScalef(s, s, s);
+
+	// the rest of the function uses normalized coordinates -1 .. 1
+
+	// TODO player model
+
+	// collision box
 	glBegin(GL_QUADS);
+	{
 		glColor3f(1.0, 1.0, 1.0);
-		glVertex2f( this->pos_x,					 0);
-		glVertex2f( this->pos_x - SHIP_PLAYER_WIDTH, 0);
-		glVertex2f( this->pos_x - SHIP_PLAYER_WIDTH, SHIP_PLAYER_HEIGHT);
-		glVertex2f( this->pos_x,					 SHIP_PLAYER_HEIGHT);
+
+		glVertex2f( 1, 1);
+		glVertex2f(-1, 1);
+		glVertex2f(-1,-1);
+		glVertex2f( 1,-1);
+
+	}
 	glEnd();
+
+	glBegin(GL_TRIANGLES);
+	{
+		glColor3f(0.5, 0.5, 0.5);
+
+		glVertex2f(0.0, 0.0);
+		glVertex2f(-1.2, -1.0);
+		glVertex2f( 1.2, -1.0);
+	}
+	glEnd();
+
 }
 
-void Ship::checkControls(ShotManager* shotManager){
+void Ship::checkControls(ShotManager* shotManager)
+{
+	float delta_s = PLAYER_SPEED_MS * FRAME_TIME_MS;
+	float min_x = ORTHO_LEFT + PLAYER_WIDTH / 2;
+	float max_x = ORTHO_RIGHT - PLAYER_WIDTH / 2;
 
-	// move left
-	if (gCtrl.isDown(KEY_LEFT)){
-		this->pos_x -= 10;
+	// Movement
+	if(gCtrl.isDown(KEY_LEFT))
+	{
+		this->pos_x -= delta_s;
 
-		if (this->pos_x < SHIP_PLAYER_WIDTH)
-			this->pos_x = SHIP_PLAYER_WIDTH;
+		if(this->pos_x < min_x)
+		{
+			this->pos_x = min_x;
+		}
 	}
-	//move right
-	else if (gCtrl.isDown(KEY_RIGHT)){
-		this->pos_x += 10;
+	else if(gCtrl.isDown(KEY_RIGHT))
+	{
+		this->pos_x += delta_s;
 
-		if (this->pos_x > ORTHO_RIGHT)
-			this->pos_x = ORTHO_RIGHT;
+		if(this->pos_x > max_x)
+		{
+			this->pos_x = max_x;
+		}
 	}
 
-	if(gCtrl.isDown(KEY_FIRE)){
+	// Do not write "else if" here, the ship should fire even if it moves
+	if(gCtrl.isDown(KEY_FIRE))
+	{
 		shotManager->newShot(true, this->pos_x - SHIP_PLAYER_WIDTH/2, this->pos_y + SHIP_PLAYER_HEIGHT);
 		gCtrl.reset(KEY_FIRE);
 	}

@@ -4,7 +4,6 @@
 #include "globals.h"
 #include "ShotManager.h"
 
-
 class Ship
 {
 public:
@@ -17,8 +16,8 @@ private:
 	void fire();
 
 	int lives = 3;
-	double pos_x = ORTHO_RIGHT/2 + SHIP_PLAYER_WIDTH/2;
-	double pos_y = 0;
+	float pos_x = ORTHO_WIDTH / 2;
+	float pos_y = PLAYER_HEIGHT / 2;
 };
 
 #endif

@@ -75,7 +75,7 @@ void Ship::checkControls(ShotManager* shotManager)
 	// Do not write "else if" here, the ship should fire even if it moves
 	if(gCtrl.isDown(KEY_FIRE))
 	{
-		float shot_x = this->pos_x - PLAYER_WIDTH / 2;
+		float shot_x = this->pos_x;
 		float shot_y = this->pos_y + PLAYER_HEIGHT / 4;
 
 		shotManager->newShot(PLAYER_SHOT, shot_x, shot_y);

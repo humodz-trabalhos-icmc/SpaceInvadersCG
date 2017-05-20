@@ -1,11 +1,12 @@
+#include <iostream>
 #include <GL/glut.h>
 
 #include "Shot.h"
 #include "globals.h"
 
 // atualiza a posição do tiro
-void Shot::update() {
-
+void Shot::update()
+{
 	if(isActive()) {
 		// move up
 		if (this->type == PLAYER_SHOT) {
@@ -23,34 +24,35 @@ void Shot::update() {
 }
 
 // desenha tiro na tela
-void Shot::draw() {
+void Shot::draw()
+{
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 
-	// só desenha tiro ativo
+	GLfloat cx = this->pos_x;
+	GLfloat cy = this->pos_y;
+
 	if (isActive()) {
-		// desenha tiro do jogador
 		if (this->type == PLAYER_SHOT) {
-			glColor3f(1.0, 1.0, 1.0);
-			glBegin(GL_LINES);
-			{
-				glVertex3f(this->pos_x, this->pos_y, 0.0);
-				glVertex3f(this->pos_x, this->pos_y - 5, 0.0);
-			}
-			glEnd();
+			glColor3f(0.0, 0.0, 1.0);
 		}
-		// desenha tiro do inimigo
 		else { // this->type == ALIEN_SHOT
-			glColor3f(1.0, 1.0, 1.0);
-			glBegin(GL_LINES);
-			{
-				glVertex3f(this->pos_x, this->pos_y, 0.0);
-				glVertex3f(this->pos_x, this->pos_y + 5, 0.0);
-			}
-			glEnd();
+			glColor3f(0.0, 1.0, 0.0);
 		}
+
+		glBegin(GL_QUADS);
+		{
+			glVertex2f(cx - 2.5, cy - 5.0);
+			glVertex2f(cx + 2.5, cy - 5.0);
+			glVertex2f(cx + 2.5, cy + 5.0);
+			glVertex2f(cx - 2.5, cy + 5.0);
+		}
+		glEnd();
 	}
 }
 
-void Shot::activate(float x, float y) {
+void Shot::activate(float x, float y)
+{
 	is_active = true;
 	this->pos_x = x;
 	this->pos_y = y;

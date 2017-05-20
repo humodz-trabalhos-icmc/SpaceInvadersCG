@@ -25,7 +25,7 @@ void Ship::draw()
 	// TODO player model
 
 	// collision box
-	glBegin(GL_QUADS);
+	glBegin(GL_LINE_LOOP);
 	{
 		glColor3f(1.0, 1.0, 1.0);
 
@@ -33,20 +33,14 @@ void Ship::draw()
 		glVertex2f(-1, 1);
 		glVertex2f(-1,-1);
 		glVertex2f( 1,-1);
-
 	}
 	glEnd();
 
-	glBegin(GL_TRIANGLES);
-	{
-		glColor3f(0.5, 0.5, 0.5);
+	drawLeftSide();
 
-		glVertex2f(0.0, 0.0);
-		glVertex2f(-1.2, -1.0);
-		glVertex2f( 1.2, -1.0);
-	}
-	glEnd();
-
+	// Right side
+	glScalef(-1.0, 1.0, 1.0);
+	drawLeftSide();
 }
 
 void Ship::checkControls(ShotManager* shotManager)
@@ -94,4 +88,33 @@ void Ship::checkCollision(){
 	// termina o jogo
 	if (this->lives == 0)
 		exit(0);
+}
+
+void Ship::drawLeftSide()
+{
+	glBegin(GL_TRIANGLES);
+	{
+		glColor3f(1.0, 1.0, 1.0);
+
+		// Wing
+		glVertex2f(-7.0/5.0, -4.0/5.0);
+		glVertex2f(-1.0/5.0, -4.0/5.0);
+		glVertex2f(-1.0/5.0, -1.0/5.0);
+
+		// Tail wing
+		glVertex2f(-3.0/5.0, -1.0);
+		glVertex2f(-1.0/5.0, -1.0);
+		glVertex2f(-1.0/5.0, -3.0/5.0);
+
+		// Body side
+		glVertex2f(-3.0/5.0, -3.0/5.0);
+		glVertex2f(-1.0/5.0, -1.0);
+		glVertex2f(-1.0/5.0, 1.0);
+	}
+	glEnd();
+
+	glBegin(GL_QUADS);
+	{
+	}
+	glEnd();
 }

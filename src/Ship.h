@@ -14,6 +14,7 @@ private:
 	void checkControls(ShotManager* shotManager);
 	void checkCollision();
 	void fire();
+	void drawLeftSide();
 
 	int lives = 3;
 	float pos_x = ORTHO_WIDTH / 2;

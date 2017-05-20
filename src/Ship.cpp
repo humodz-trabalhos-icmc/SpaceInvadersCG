@@ -8,7 +8,7 @@
 void Ship::update(ShotManager* shotManager)
 {
 	checkControls(shotManager);
-	checkCollision();
+	checkCollision(shotManager);
 }
 
 void Ship::draw()
@@ -25,7 +25,7 @@ void Ship::draw()
 	// TODO finish player model
 
 	// collision box
-	glBegin(GL_LINE_LOOP);
+	/*glBegin(GL_LINE_LOOP);
 	{
 		glColor3f(1.0, 1.0, 1.0);
 
@@ -34,8 +34,9 @@ void Ship::draw()
 		glVertex2f(-5.0,-5.0);
 		glVertex2f( 5.0,-5.0);
 	}
-	glEnd();
+	glEnd();*/
 
+	drawCenter();
 	drawLeftSide();
 
 	// Right side (reflection of left side)
@@ -43,7 +44,6 @@ void Ship::draw()
 	drawLeftSide();
 
 	// Symmetric, not affected by reflection
-	drawCenter();
 }
 
 void Ship::checkControls(ShotManager* shotManager)
@@ -75,13 +75,17 @@ void Ship::checkControls(ShotManager* shotManager)
 	// Do not write "else if" here, the ship should fire even if it moves
 	if(gCtrl.isDown(KEY_FIRE))
 	{
+		float shot_x = this->pos_x - PLAYER_WIDTH / 2;
+		float shot_y = this->pos_y + PLAYER_HEIGHT / 4;
 
-		shotManager->newShot(PLAYER_SHOT, this->pos_x - PLAYER_WIDTH/2, this->pos_y + PLAYER_HEIGHT);
+		shotManager->newShot(PLAYER_SHOT, shot_x, shot_y);
 		gCtrl.reset(KEY_FIRE);
 	}
 }
 
-void Ship::checkCollision(){
+void Ship::checkCollision(ShotManager *shotManager)
+{
+	(void) shotManager;
 	// TODO collision check
 	bool got_hit = false;
 
@@ -95,42 +99,96 @@ void Ship::checkCollision(){
 
 void Ship::drawLeftSide()
 {
+
 	glBegin(GL_TRIANGLES);
 	{
-		glColor3f(1.0, 1.0, 1.0);
-
 		// Wing
+		glColor3f(0.75, 0.75, 0.75);
+
 		glVertex2f(-7.0, -4.0);
 		glVertex2f(-1.0, -4.0);
 		glVertex2f(-1.0, -1.0);
 
 		// Tail wing
-		glVertex2f(-3.0, -5.0);
+		glColor3f(1.0, 0.0, 0.0);
+
+		glVertex2f(-4.0, -5.0);
 		glVertex2f(-1.0, -5.0);
 		glVertex2f(-1.0, -3.0);
+
+		// Wing Stripe
+		glColor3f(1.0, 0.0, 0.0);
+
+		glVertex2f(-7.0, -4.0);
+		glVertex2f(-1.0, -1.0);
+		glVertex2f(-1.0, -2.0);
 	}
 	glEnd();
 
 	glBegin(GL_QUADS);
 	{
 		// Body side
+		glColor3f(0.5, 0.5, 0.5);
+
 		glVertex2f(-3.0, -3.0);
 		glVertex2f(-1.0, -5.0);
-		glVertex2f(-1.0, 5.0);
-		glVertex2f(-1.5, 5.0);
+		glVertex2f(-1.0,  5.0);
+		glVertex2f(-1.5,  5.0);
+
+		// Body stripe
+		glColor3f(1.0, 0.0, 0.0);
+
+		glVertex2f(-3.0, -3.0);
+		glVertex2f(-1.0,  3.0);
+		glVertex2f(-1.0,  5.0);
+		glVertex2f(-1.5,  5.0);
+
 	}
 	glEnd();
 
+/*	glBegin(GL_LINES);
+	{
+		glColor3f(0.25, 0.25, 0.25);
+
+		// Body side
+		glVertex2f(-3.0, -3.0);
+		glVertex2f(-1.0, -5.0);
+	}
+	glEnd();
+*/
 }
 
 void Ship::drawCenter()
 {
 	glBegin(GL_QUADS);
 	{
+		glColor3f(0.75, 0.75, 0.75);
+
 		glVertex2f(-1.0, 0.0);
 		glVertex2f(+1.0, 0.0);
 		glVertex2f(+0.5, 2.0);
 		glVertex2f(-0.5, 2.0);
+
+		glVertex2f(-1.0, 0.0);
+		glVertex2f(+1.0, 0.0);
+		glVertex2f(+1.0,-4.0);
+		glVertex2f(-1.0,-4.0);
+
+		// Exhaust
+		glColor3f(0.25, 0.25, 0.25);
+
+		glVertex2f(-1.0, -4.0);
+		glVertex2f(+1.0, -4.0);
+		glVertex2f(+0.5, -5.0);
+		glVertex2f(-0.5, -5.0);
+
+		// Cockpit
+		glColor3f(0.0, 0.0, 0.0);
+
+		glVertex2f(-0.25, 1.0);
+		glVertex2f(+0.25, 1.0);
+		glVertex2f(+0.5,-1.0);
+		glVertex2f(-0.5,-1.0);
 	}
 	glEnd();
 }

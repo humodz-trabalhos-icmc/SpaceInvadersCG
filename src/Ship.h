@@ -12,7 +12,7 @@ public:
 
 private:
 	void checkControls(ShotManager* shotManager);
-	void checkCollision();
+	void checkCollision(ShotManager *shotManager);
 	void fire();
 	void drawLeftSide();
 	void drawCenter();

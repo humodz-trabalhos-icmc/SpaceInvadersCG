@@ -21,7 +21,7 @@ const int FRAME_TIME_MS = 1000 / FRAME_RATE;
 const float PLAYER_SPEED_MS = ORTHO_WIDTH / (5.0 * 1000);
 
 // Dimensoes da caixa de colisao do jogador
-const float PLAYER_HEIGHT = 50.0;
-const float PLAYER_WIDTH  = 50.0;
+#define PLAYER_HEIGHT 50.0
+#define PLAYER_WIDTH  50.0
 
 #endif

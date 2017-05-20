@@ -15,6 +15,7 @@ private:
 	void checkCollision();
 	void fire();
 	void drawLeftSide();
+	void drawCenter();
 
 	int lives = 3;
 	float pos_x = ORTHO_WIDTH / 2;

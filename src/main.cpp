@@ -7,13 +7,12 @@
 #include "Shot.h"
 #include "ShotManager.h"
 #include "Alien.h"
-
+#include "AlienManager.h"
 using namespace std;
 
 Ship player;
 ShotManager shotManager;
-Alien alien_teste;
-
+AlienManager aliens;
 void onDisplay(void)
 {
 	glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -29,7 +28,9 @@ void onDisplay(void)
 	// Colocar todas as funcoes de .draw() aqui:
 	player.draw();
 	shotManager.draw();
-	alien_teste.draw();
+	
+	//desenha a tropa de aliens
+	aliens.newAlienTroop(5, 5);	
 
 	glutSwapBuffers();
 }
@@ -45,7 +46,8 @@ void onTimerTick(int step)
 }
 
 int main(int argc, char **argv)
-{
+{	
+
 	// Initialize window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);

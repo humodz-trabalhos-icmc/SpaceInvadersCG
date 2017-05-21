@@ -83,5 +83,5 @@ void Alien::fire(ShotManager *shotManager)
 
 	float shot_x = this->pos_x;
 	float shot_y = this->pos_y + TAM_ALIEN_Y/4; // TAM_ALIEN_Y/4 igual player
-	shotManager->newShot(ALIEN_SHOT, shot_x, shot_y);
+	if (rand() % 1000 == 0) shotManager->newShot(ALIEN_SHOT, shot_x, shot_y);
 }

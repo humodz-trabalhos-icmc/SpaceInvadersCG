@@ -15,6 +15,9 @@ void Ship::draw()
 {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+
+	drawLives();
+
 	glTranslatef(pos_x, pos_y, 0.0);
 
 	// TODO explain numbers
@@ -95,6 +98,24 @@ void Ship::checkCollision(ShotManager *shotManager)
 	// termina o jogo
 	if (this->lives == 0)
 		exit(0);
+}
+
+void Ship::drawLives()
+{
+	glColor3f(1.0, 0.0, 0.0);
+
+	int i;
+	for(i = 0; i < lives; i++)
+	{
+		glBegin(GL_QUADS);
+		{
+			glVertex2f(i * 30 + 5, ORTHO_UP - 5);
+			glVertex2f(i * 30 + 5, ORTHO_UP - 25);
+			glVertex2f((i+1) * 30 - 5, ORTHO_UP - 25);
+			glVertex2f((i+1) * 30 - 5, ORTHO_UP - 5);
+		}
+		glEnd();
+	}
 }
 
 void Ship::drawLeftSide()

@@ -6,6 +6,25 @@
 #include "Alien.h"
 
 
+
+//precisa arrumar aqui ainda (shotManager*)
+void Alien::update() {
+	if(isActive()) {
+		if(this->step  < 5) {
+			setPosition(this->pos_x + 30, this->pos_y);
+			this->step++;
+		}
+		else if(this->step >=5 && this->step < 10) {
+			setPosition(this->pos_x - 30, this->pos_y);
+			this->step++;
+		}else {
+			setPosition(this->pos_x, this->pos_y - 50);
+			this->step = 0;
+		}
+
+	}
+}
+
 void Alien::draw() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();	

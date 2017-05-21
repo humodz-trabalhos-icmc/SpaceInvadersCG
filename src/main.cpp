@@ -28,9 +28,9 @@ void onDisplay(void)
 	// Colocar todas as funcoes de .draw() aqui:
 	player.draw();
 	shotManager.draw();
-	
+
 	//desenha a tropa de aliens
-	aliens.newAlienTroop(5, 5);	
+	aliens.newAlienTroop(1, 1);	
 
 	glutSwapBuffers();
 }
@@ -40,6 +40,7 @@ void onTimerTick(int step)
 	// Colocar todas as funcoes de .update() aqui:
 	player.update(&shotManager);
 	shotManager.update();
+	aliens.update();
 
 	glutTimerFunc(FRAME_TIME_MS, onTimerTick, step + 1);
 	glutPostRedisplay();

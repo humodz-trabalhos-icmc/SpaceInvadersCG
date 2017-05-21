@@ -1,10 +1,19 @@
 #include <algorithm>
 #include <iostream>
+#include <GL/glut.h>
 
 #include "AlienManager.h"
 #include "Alien.h"
 #include "globals.h"
 
+
+void AlienManager::update() {
+	unsigned int i;
+	
+	for(i = 0; i < this->aliens.size(); i++) {
+		this->aliens[i].update();
+	} 	
+}
 void AlienManager::draw() {
 	unsigned int i;
 
@@ -24,6 +33,6 @@ void AlienManager::newAlienTroop(float x, float y) {
 								+ ESPACAMENTO_ALIENS_Y)*i + ESPACAMENTO_ALIENS_Y));
 			this->aliens.push_back(alien);
 		}
-	}
+	}	
 	draw();
 }

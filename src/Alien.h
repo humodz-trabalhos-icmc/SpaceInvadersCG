@@ -6,8 +6,8 @@
 
 class Alien {
 	public:
-
-		void update(ShotManager *shotManager);
+		//precisa arrumar aqui ainda (shotManager*)
+		void update();
 		void draw();
 
 		void setPosition(float pos_x, float pos_y) {
@@ -17,6 +17,7 @@ class Alien {
 		bool isActive(){
 			return is_active;
 		}
+		int step = 0;
 	private:
 		void checkCollision(ShotManager *shotManager);
 		void fire();
@@ -26,6 +27,7 @@ class Alien {
 		bool is_active = true;
 		float pos_x;
 		float pos_y;
+
 };
 
 #endif

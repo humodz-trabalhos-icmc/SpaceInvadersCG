@@ -57,7 +57,7 @@ void Alien::draw() {
 
 void Alien::checkCollision(ShotManager *shotManager)
 {
-	if(pos_y == 0)
+	if(pos_y < 5)
 	{
 		std::cout << "os aliens venceram!" << std::endl;
 		exit(0);
@@ -69,8 +69,8 @@ void Alien::checkCollision(ShotManager *shotManager)
 			auto shotX = shotPlayer.getX();
 			auto shotY = shotPlayer.getY();
 
-			bool withinX = shotX > pos_x && shotX < pos_x + TAM_ALIEN_X;
-			bool withinY = shotY > pos_y && shotX < pos_y + TAM_ALIEN_Y;
+			bool withinX = (shotX > pos_x) && (shotX < pos_x + TAM_ALIEN_X);
+			bool withinY = (shotY > pos_y) && (shotY < pos_y + TAM_ALIEN_Y);
 
 			if (withinX && withinY) {
 				shotPlayer.deactivate();

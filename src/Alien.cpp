@@ -5,12 +5,6 @@
 #include "Alien.h"
 
 
-void Alien::update(ShotManager *shotManager) {
-	if(isActive()) {
-		if
-	}
-}
-
 void Alien::draw() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();

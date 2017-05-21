@@ -17,6 +17,9 @@ public:
 	// activate the shot and place it at (x, y)
 	void activate(float x, float y);
 
+	float getX() { return pos_x; }
+	float getY() { return pos_y; }
+
 private:
 	ShotType type  = ALIEN_SHOT;
 	bool is_active = false;

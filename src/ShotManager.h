@@ -6,18 +6,15 @@
 
 using namespace std;
 
-class ShotManager {
-
+class ShotManager
+{
 public:
 	void newShot(ShotType shot_type, float x, float y);
 	void draw();
 	void update();
 
-private:
 	vector<Shot> shotPlayer;
 	vector<Shot> shotAlien;
-	int test = 0;
-
 };
 
 #endif

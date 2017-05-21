@@ -48,9 +48,9 @@ void Alien::draw() {
 	glColor3f(0.0, 1.0, 0.0);
 
 	glBegin(GL_QUADS);
-		glVertex2f(x, y);
+		glVertex2f(x+35, y);
 		glVertex2f(x + TAM_ALIEN_X, y);
-		glVertex2f(x + TAM_ALIEN_X, y + TAM_ALIEN_Y);
+		glVertex2f(x + TAM_ALIEN_X+35, y + TAM_ALIEN_Y);
 		glVertex2f(x, y + TAM_ALIEN_Y);
 	glEnd();
 }

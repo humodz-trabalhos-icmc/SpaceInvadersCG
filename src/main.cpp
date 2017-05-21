@@ -28,9 +28,7 @@ void onDisplay(void)
 	// Colocar todas as funcoes de .draw() aqui:
 	player.draw();
 	shotManager.draw();
-
-	//desenha a tropa de aliens
-	aliens.newAlienTroop(1, 1);	
+	aliens.draw();
 
 	glutSwapBuffers();
 }
@@ -38,11 +36,20 @@ void onDisplay(void)
 void onTimerTick(int step)
 {
 	// Colocar todas as funcoes de .update() aqui:
+	if(step > 20) {
+		aliens.update();
+		step = 0;
+	}
 	player.update(&shotManager);
 	shotManager.update();
-	aliens.update();
-
 	glutTimerFunc(FRAME_TIME_MS, onTimerTick, step + 1);
+	glutPostRedisplay();
+}
+void onTimerTickAlien(int step)
+{
+	// Colocar todas as funcoes de .update() aqui:
+	aliens.update();
+	glutTimerFunc(FRAME_TIME_MS*30, onTimerTickAlien, step + 1);
 	glutPostRedisplay();
 }
 
@@ -56,11 +63,13 @@ int main(int argc, char **argv)
 	glutInitWindowPosition(400, 150);
 	glutCreateWindow("Rosinha Invaders");
 
+	//desenha a tropa de aliens
+	aliens.newAlienTroop(5, 5);	
+
 	// Register callback functions
 	Controller::registerCallbacks();
 	glutDisplayFunc(onDisplay);
 	glutTimerFunc(0, onTimerTick, 0);
-
 	glutMainLoop();
 
 	return 0;

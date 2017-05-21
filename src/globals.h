@@ -21,11 +21,11 @@ const float PLAYER_SPEED_MS = ORTHO_WIDTH / (5.0 * 1000);
 
 // Dimensoes da caixa de colisao do jogador
 #define PLAYER_HEIGHT 50.0
-#define PLAYER_WIDTH  50.0
+#define PLAYER_WIDTH  25.0
 
 // posicao do primeiro alien (canto inferior direito)
 #define FIRST_ALIEN_X 150
-#define FIRST_ALIEN_Y 150
+#define FIRST_ALIEN_Y 200
 
 //dimensoes do alien e o espaçamento entre eles
 #define TAM_ALIEN_X 40

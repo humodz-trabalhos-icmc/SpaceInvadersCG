@@ -8,7 +8,7 @@
 #define MOVEMENT_Y 50.0
 
 #define MAX_STEP 10
-#define MOVE_TIME 20
+#define MOVE_TIME 40
 
 class Alien {
 	public:

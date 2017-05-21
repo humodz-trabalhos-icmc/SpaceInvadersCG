@@ -21,14 +21,9 @@ void Ship::draw()
 
 	glTranslatef(pos_x, pos_y, 0.0);
 
-	// TODO explain numbers
-
-	GLfloat s = PLAYER_WIDTH / 10.0;
+	GLfloat s = 2 * PLAYER_WIDTH / 10.0;
 	glScalef(s, s, s);
 
-	// TODO finish player model
-
-	// collision box
 	/*glBegin(GL_LINE_LOOP);
 	{
 		glColor3f(1.0, 1.0, 1.0);
@@ -46,8 +41,6 @@ void Ship::draw()
 	// Right side (reflection of left side)
 	glScalef(-1.0, 1.0, 1.0);
 	drawLeftSide();
-
-	// Symmetric, not affected by reflection
 }
 
 void Ship::checkControls(ShotManager* shotManager)
@@ -89,32 +82,33 @@ void Ship::checkControls(ShotManager* shotManager)
 
 void Ship::checkCollision(ShotManager *shotManager)
 {
-	(void) shotManager;
-	// TODO collision check
-	bool got_hit = false;
-	for (auto shotAlien : shotManager->shotAlien) {
-		auto shotX = shotAlien.getX();
-		auto shotY = shotAlien.getY();
+	for (auto &shotAlien : shotManager->shotAlien) {
+		if(shotAlien.isActive())
+		{
+			auto shotX = shotAlien.getX();
+			auto shotY = shotAlien.getY();
 
-		// TODO: não consegui debugar isso ainda
-		bool colX = shotX > PLAYER_WIDTH/2 - this->pos_x &&
-			shotX < PLAYER_WIDTH/2 + this->pos_x;
-		bool colY = shotY > PLAYER_HEIGHT/2 - this->pos_y &&
-			shotY < PLAYER_HEIGHT/2 + this->pos_y;
+			float w = PLAYER_WIDTH;
+			float h = PLAYER_HEIGHT;
 
-		if (colX && colY)  {
-			shotAlien.deactivate();
-			got_hit = true;
-			break;
+			bool colX = shotX > pos_x - w/2 && shotX < pos_x + w/2;
+			bool colY = shotY > pos_y - h/2 && shotY < pos_y + h/2;
+
+			if (colX && colY)  {
+				shotAlien.deactivate();
+				this->lives --;
+				break;
+			}
+
 		}
 	}
 
-	if(got_hit)
-		this->lives--;
-
 	// termina o jogo
 	if (this->lives == 0)
+	{
+		std::cout << "sem vidas!" << std::endl;
 		exit(0);
+	}
 }
 
 void Ship::drawLives()

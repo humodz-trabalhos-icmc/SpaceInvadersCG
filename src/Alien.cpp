@@ -48,31 +48,37 @@ void Alien::draw() {
 	glColor3f(0.0, 1.0, 0.0);
 
 	glBegin(GL_QUADS);
-		glVertex2f(x+35, y);
+		glVertex2f(x, y);
 		glVertex2f(x + TAM_ALIEN_X, y);
-		glVertex2f(x + TAM_ALIEN_X+35, y + TAM_ALIEN_Y);
+		glVertex2f(x + TAM_ALIEN_X, y + TAM_ALIEN_Y);
 		glVertex2f(x, y + TAM_ALIEN_Y);
 	glEnd();
 }
 
 void Alien::checkCollision(ShotManager *shotManager)
 {
-	(void) shotManager;
-	for (auto shotPlayer : shotManager->shotPlayer) {
-		auto shotX = shotPlayer.getX();
-		auto shotY = shotPlayer.getY();
+	if(pos_y == 0)
+	{
+		std::cout << "os aliens venceram!" << std::endl;
+		exit(0);
+	}
 
-		// TODO: não consegui debugar isso ainda
-		bool colX = shotX > TAM_ALIEN_X - this->pos_x &&
-			shotX < TAM_ALIEN_X  + this->pos_x;
-		bool colY = shotY > TAM_ALIEN_Y - this->pos_y &&
-			shotY < TAM_ALIEN_Y + this->pos_y;
+	for (auto &shotPlayer : shotManager->shotPlayer) {
+		if(shotPlayer.isActive())
+		{
+			auto shotX = shotPlayer.getX();
+			auto shotY = shotPlayer.getY();
 
-		if (colX && colY) {
-			shotPlayer.deactivate();
-			this->is_active = false;
-			break;
+			bool withinX = shotX > pos_x && shotX < pos_x + TAM_ALIEN_X;
+			bool withinY = shotY > pos_y && shotX < pos_y + TAM_ALIEN_Y;
+
+			if (withinX && withinY) {
+				shotPlayer.deactivate();
+				this->is_active = false;
+				break;
+			}
 		}
+
 	}
 }
 
@@ -82,6 +88,10 @@ void Alien::fire(ShotManager *shotManager)
 // TODO: ver se um delay é realmente necessário
 
 	float shot_x = this->pos_x;
-	float shot_y = this->pos_y + TAM_ALIEN_Y/4; // TAM_ALIEN_Y/4 igual player
-	if (rand() % 1000 == 0) shotManager->newShot(ALIEN_SHOT, shot_x, shot_y);
+	float shot_y = this->pos_y;
+
+	if (rand() % 1000 == 0)
+	{
+		shotManager->newShot(ALIEN_SHOT, shot_x, shot_y);
+	}
 }

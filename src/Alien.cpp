@@ -57,7 +57,18 @@ void Alien::draw() {
 
 void Alien::checkCollision(ShotManager *shotManager)
 {
+	(void) shotManager;
+	bool got_hit = false;
+	for (auto shotPlayer : shotManager->shotPlayer) {
+		auto shotX = shotPlayer.getX();
+		auto shotY = shotPlayer.getY();
 
+		//TODO: não consegui debugar isso ainda
+		bool colX = this->pos_x + PLAYER_WIDTH/2 >= shotX;
+		bool colY = this->pos_y + PLAYER_HEIGHT/2 >= shotY;
+
+		colX && colY ? got_hit = true : got_hit = false;
+	}
 }
 
 void Alien::fire(ShotManager *shotManager)

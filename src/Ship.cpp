@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <iostream>
 #include <GL/glut.h>
 
 #include "globals.h"
@@ -91,6 +92,16 @@ void Ship::checkCollision(ShotManager *shotManager)
 	(void) shotManager;
 	// TODO collision check
 	bool got_hit = false;
+	for (auto shotAlien : shotManager->shotAlien) {
+		auto shotX = shotAlien.getX();
+		auto shotY = shotAlien.getY();
+
+		// TODO: não consegui debugar isso ainda
+		bool colX = this->pos_x + PLAYER_WIDTH/2 >= shotX;
+		bool colY = this->pos_y + PLAYER_HEIGHT >= shotY;
+
+		colX && colY ? got_hit = true : got_hit = false;
+	}
 
 	if(got_hit)
 		this->lives--;

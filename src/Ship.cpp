@@ -97,10 +97,16 @@ void Ship::checkCollision(ShotManager *shotManager)
 		auto shotY = shotAlien.getY();
 
 		// TODO: não consegui debugar isso ainda
-		bool colX = this->pos_x + PLAYER_WIDTH/2 >= shotX;
-		bool colY = this->pos_y + PLAYER_HEIGHT >= shotY;
+		bool colX = shotX > PLAYER_WIDTH/2 - this->pos_x &&
+			shotX < PLAYER_WIDTH/2 + this->pos_x;
+		bool colY = shotY > PLAYER_HEIGHT/2 - this->pos_y &&
+			shotY < PLAYER_HEIGHT/2 + this->pos_y;
 
-		colX && colY ? got_hit = true : got_hit = false;
+		if (colX && colY)  {
+			shotAlien.deactivate();
+			got_hit = true;
+			break;
+		}
 	}
 
 	if(got_hit)

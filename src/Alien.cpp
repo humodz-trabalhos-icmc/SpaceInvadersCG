@@ -63,11 +63,17 @@ void Alien::checkCollision(ShotManager *shotManager)
 		auto shotX = shotPlayer.getX();
 		auto shotY = shotPlayer.getY();
 
-		//TODO: não consegui debugar isso ainda
-		bool colX = this->pos_x + PLAYER_WIDTH/2 >= shotX;
-		bool colY = this->pos_y + PLAYER_HEIGHT/2 >= shotY;
+		// TODO: não consegui debugar isso ainda
+		bool colX = shotX > TAM_ALIEN_X - this->pos_x &&
+			shotX < TAM_ALIEN_X  + this->pos_x;
+		bool colY = shotY > TAM_ALIEN_Y - this->pos_y &&
+			shotY < TAM_ALIEN_Y + this->pos_y;
 
-		colX && colY ? got_hit = true : got_hit = false;
+		if (colX && colY) {
+			shotPlayer.deactivate();
+			this->is_active = false;
+			break;
+		}
 	}
 }
 

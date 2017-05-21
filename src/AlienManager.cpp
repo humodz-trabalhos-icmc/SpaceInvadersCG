@@ -10,12 +10,25 @@
 void AlienManager::update(ShotManager *shotManager) {
 	unsigned int i;
 
+	unsigned int dead_count = 0;
+
 	for(i = 0; i < this->aliens.size(); i++) {
 		this->aliens[i].update(shotManager);
+
+		if(this->aliens[i].isActive() == false)
+		{
+			dead_count ++;
+		}
+	}
+
+	if(dead_count == this->aliens.size())
+	{
+		std::cout << "voce venceu!" << std::endl;
 	}
 }
 void AlienManager::draw() {
 	unsigned int i;
+
 
 	for(i = 0; i < this->aliens.size(); i++) {
 		this->aliens[i].draw();

@@ -58,7 +58,6 @@ void Alien::draw() {
 void Alien::checkCollision(ShotManager *shotManager)
 {
 	(void) shotManager;
-	bool got_hit = false;
 	for (auto shotPlayer : shotManager->shotPlayer) {
 		auto shotX = shotPlayer.getX();
 		auto shotY = shotPlayer.getY();
@@ -79,17 +78,8 @@ void Alien::checkCollision(ShotManager *shotManager)
 
 void Alien::fire(ShotManager *shotManager)
 {
-	//TODO: verificar se o tempo para tiro dos aliens é ideal
-
-	int i = 0;
-	while(true) {
-
-		i++;
-		if (i % 40 == 0) {
-			float shot_x = this->pos_x;
-			float shot_y = this->pos_y + TAM_ALIEN_Y/4; // TAM_ALIEN_Y/4 igual player
-			shotManager->newShot(ALIEN_SHOT, shot_x, shot_y);
-			i = 0;
-		}
-	}
+	//TODO: verificar se preciso colocar um time/step aqui
+	float shot_x = this->pos_x;
+	float shot_y = this->pos_y + TAM_ALIEN_Y/4; // TAM_ALIEN_Y/4 igual player
+	shotManager->newShot(ALIEN_SHOT, shot_x, shot_y);
 }

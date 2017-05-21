@@ -10,11 +10,11 @@
 //precisa arrumar aqui ainda (shotManager*)
 void Alien::update() {
 	if(isActive()) {
-		if(this->step  < 5) {
+		if(this->step  < 10) {
 			setPosition(this->pos_x + 30, this->pos_y);
 			this->step++;
 		}
-		else if(this->step >=5 && this->step < 10) {
+		else if(this->step >=10 && this->step < 20) {
 			setPosition(this->pos_x - 30, this->pos_y);
 			this->step++;
 		}else {

@@ -17,7 +17,7 @@ class Alien {
 		bool isActive(){
 			return is_active;
 		}
-		int step = 0;
+		int step = 5;
 	private:
 		void checkCollision(ShotManager *shotManager);
 		void fire();

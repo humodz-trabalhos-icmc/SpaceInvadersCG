@@ -32,7 +32,7 @@ class Alien {
 		float pos_y;
 
 		int timer = 0;
-		int step = 0;
+		int step = 5;
 
 		float direction_x = 1.0;
 

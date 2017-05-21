@@ -11,7 +11,7 @@ class AlienManager {
 	public:
 		void newAlienTroop(float x, float y);
 		void draw();
-		void update();
+		void update(ShotManager *shotManager);
 
 		vector<Alien> aliens;
 };

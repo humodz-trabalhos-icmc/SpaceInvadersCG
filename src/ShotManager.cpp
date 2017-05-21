@@ -50,11 +50,15 @@ void ShotManager::draw() {
 	{
 		this->shotPlayer[i].draw();
 	}
+// implementação que nem todos os aliens atiram
+	int rndAlien = rand() % this->shotAlien.size();
+	this->shotAlien[rndAlien].draw();
 
-	for(i = 0; i < this->shotAlien.size(); i++)
-	{
-		this->shotAlien[i].draw();
-	}
+// implementação que todos os aliens atiram
+	// for(i = 0; i < this->shotAlien.size(); i++)
+	// {
+	// 	this->shotAlien[i].draw();
+	// }
 }
 
 void ShotManager::update() {

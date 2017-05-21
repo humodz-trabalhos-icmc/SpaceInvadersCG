@@ -78,7 +78,9 @@ void Alien::checkCollision(ShotManager *shotManager)
 
 void Alien::fire(ShotManager *shotManager)
 {
-	//TODO: verificar se preciso colocar um time/step aqui
+
+// TODO: ver se um delay é realmente necessário
+
 	float shot_x = this->pos_x;
 	float shot_y = this->pos_y + TAM_ALIEN_Y/4; // TAM_ALIEN_Y/4 igual player
 	shotManager->newShot(ALIEN_SHOT, shot_x, shot_y);

@@ -24,6 +24,7 @@ void AlienManager::update(ShotManager *shotManager) {
 	if(dead_count == this->aliens.size())
 	{
 		std::cout << "voce venceu!" << std::endl;
+		exit(0);
 	}
 }
 void AlienManager::draw() {

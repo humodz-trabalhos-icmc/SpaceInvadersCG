@@ -39,20 +39,23 @@ void Alien::update(ShotManager *shotManager) {
 }
 
 void Alien::draw() {
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
 
-	GLfloat x = this->pos_x;
-	GLfloat y = this->pos_y;
+	if (this->isActive()) {
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 
-	glColor3f(0.0, 1.0, 0.0);
+		GLfloat x = this->pos_x;
+		GLfloat y = this->pos_y;
 
-	glBegin(GL_QUADS);
+		glColor3f(0.0, 1.0, 0.0);
+
+		glBegin(GL_QUADS);
 		glVertex2f(x, y);
 		glVertex2f(x + TAM_ALIEN_X, y);
 		glVertex2f(x + TAM_ALIEN_X, y + TAM_ALIEN_Y);
 		glVertex2f(x, y + TAM_ALIEN_Y);
-	glEnd();
+		glEnd();
+	}
 }
 
 void Alien::checkCollision(ShotManager *shotManager)
@@ -90,6 +93,7 @@ void Alien::fire(ShotManager *shotManager)
 	float shot_x = this->pos_x;
 	float shot_y = this->pos_y;
 
+	srand(time(NULL));
 	if (rand() % 1000 == 0)
 	{
 		shotManager->newShot(ALIEN_SHOT, shot_x, shot_y);

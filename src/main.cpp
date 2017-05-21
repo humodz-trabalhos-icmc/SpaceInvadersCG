@@ -6,11 +6,13 @@
 #include "Ship.h"
 #include "Shot.h"
 #include "ShotManager.h"
+#include "Alien.h"
 
 using namespace std;
 
 Ship player;
 ShotManager shotManager;
+Alien alien_teste;
 
 void onDisplay(void)
 {
@@ -27,6 +29,7 @@ void onDisplay(void)
 	// Colocar todas as funcoes de .draw() aqui:
 	player.draw();
 	shotManager.draw();
+	alien_teste.draw();
 
 	glutSwapBuffers();
 }

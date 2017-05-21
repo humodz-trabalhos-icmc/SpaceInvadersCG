@@ -79,5 +79,17 @@ void Alien::checkCollision(ShotManager *shotManager)
 
 void Alien::fire(ShotManager *shotManager)
 {
+	//TODO: verificar se o tempo para tiro dos aliens é ideal
 
+	int i = 0;
+	while(true) {
+
+		i++;
+		if (i % 40 == 0) {
+			float shot_x = this->pos_x;
+			float shot_y = this->pos_y + TAM_ALIEN_Y/4; // TAM_ALIEN_Y/4 igual player
+			shotManager->newShot(ALIEN_SHOT, shot_x, shot_y);
+			i = 0;
+		}
+	}
 }

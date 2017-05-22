@@ -47,6 +47,9 @@ void onTimerTick(int step)
 int main(int argc, char **argv)
 {
 
+	//initialize seed
+	srand(time(NULL));
+
 	// Initialize window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);

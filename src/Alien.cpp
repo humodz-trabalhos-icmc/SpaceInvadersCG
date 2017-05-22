@@ -93,7 +93,6 @@ void Alien::fire(ShotManager *shotManager)
 	float shot_x = this->pos_x;
 	float shot_y = this->pos_y;
 
-	srand(time(NULL));
 	if (rand() % 1000 == 0)
 	{
 		shotManager->newShot(ALIEN_SHOT, shot_x, shot_y);

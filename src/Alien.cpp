@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <GL/glut.h>
-
+#include <math.h>
 #include "globals.h"
 #include "Alien.h"
 
@@ -160,15 +160,39 @@ void Alien::model2()
 
 void Alien::model3()
 {
-	glColor3f(0.0, 0.0, 1.0);
-
+	glColor3f(0.5, 0.5, 1.0);
 	glBegin(GL_QUADS);
 	{
-		glVertex2f(0, 0);
-		glVertex2f(TAM_ALIEN_X, 0);
-		glVertex2f(TAM_ALIEN_X, TAM_ALIEN_Y);
-		glVertex2f(0, TAM_ALIEN_Y);
+		glVertex2f(12, 5);
+		glVertex2f(28, 5);
+		glVertex2f(28, 18);
+		glVertex2f(12, 18);
 	}
+	glEnd();
+	glColor3f(0.0, 0.0, 1.0);
+	glBegin(GL_TRIANGLES);
+	{
+		glVertex2f(0, TAM_ALIEN_Y/2);
+		glVertex2f(15, 0);
+		glVertex2f(20, TAM_ALIEN_Y/4);
+	}
+	glEnd();
+	glBegin(GL_TRIANGLES);
+	{
+		glVertex2f(20, TAM_ALIEN_Y/4);
+		glVertex2f(25, 0);
+		glVertex2f(40, TAM_ALIEN_Y/2);
+	}
+	glEnd();
+	GLfloat twicePi = 2.0f * 3.1415;
+	int i;
+	glBegin(GL_LINE_LOOP);
+		for(i = 0; i <= 100;i++) { 
+			glVertex2f(
+			    20 + (2 * cos(i *  twicePi / 100)), 
+			    11.5 + (2* sin(i * twicePi / 100))
+			);
+		}
 	glEnd();
 
 }

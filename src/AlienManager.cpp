@@ -45,6 +45,7 @@ void AlienManager::newAlienTroop(float x, float y) {
 			alien.setPosition(FIRST_ALIEN_X + ((TAM_ALIEN_X + ESPACAMENTO_ALIENS_X)*j
 								+ ESPACAMENTO_ALIENS_X), FIRST_ALIEN_Y + ((TAM_ALIEN_Y
 								+ ESPACAMENTO_ALIENS_Y)*i + ESPACAMENTO_ALIENS_Y));
+			alien.setModel(i / 2 + 1);
 			this->aliens.push_back(alien);
 		}
 	}

@@ -21,6 +21,10 @@ class Alien {
 		}
 		bool isActive() { return is_active; }
 		void deactivate() { is_active = false; }
+		void setModel(int m) { model = m; }
+		void model1();
+		void model2();
+		void model3();
 
 	private:
 		void checkCollision(ShotManager *shotManager);
@@ -31,6 +35,7 @@ class Alien {
 		float pos_x;
 		float pos_y;
 
+		int model;
 		int timer = 0;
 		int step = 5;
 

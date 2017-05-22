@@ -43,19 +43,57 @@ void Alien::draw() {
 	if (this->isActive()) {
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
+		glTranslatef(pos_x, pos_y, 0.0);
 
-		GLfloat x = this->pos_x;
-		GLfloat y = this->pos_y;
+		if(model == 1) model1();
+		else if(model == 2) model2();
+		else if(model == 3) model3();
 
-		glColor3f(0.0, 1.0, 0.0);
-
-		glBegin(GL_QUADS);
-		glVertex2f(x, y);
-		glVertex2f(x + TAM_ALIEN_X, y);
-		glVertex2f(x + TAM_ALIEN_X, y + TAM_ALIEN_Y);
-		glVertex2f(x, y + TAM_ALIEN_Y);
-		glEnd();
 	}
+}
+
+void Alien::model1()
+{
+	glColor3f(1.0, 0.0, 0.0);
+
+	glBegin(GL_QUADS);
+	{
+		glVertex2f(0, 0);
+		glVertex2f(TAM_ALIEN_X, 0);
+		glVertex2f(TAM_ALIEN_X, TAM_ALIEN_Y);
+		glVertex2f(0, TAM_ALIEN_Y);
+	}
+	glEnd();
+}
+
+void Alien::model2()
+{
+	glColor3f(0.0, 1.0, 0.0);
+
+	glBegin(GL_QUADS);
+	{
+		glVertex2f(0, 0);
+		glVertex2f(TAM_ALIEN_X, 0);
+		glVertex2f(TAM_ALIEN_X, TAM_ALIEN_Y);
+		glVertex2f(0, TAM_ALIEN_Y);
+	}
+	glEnd();
+
+}
+
+void Alien::model3()
+{
+	glColor3f(0.0, 0.0, 1.0);
+
+	glBegin(GL_QUADS);
+	{
+		glVertex2f(0, 0);
+		glVertex2f(TAM_ALIEN_X, 0);
+		glVertex2f(TAM_ALIEN_X, TAM_ALIEN_Y);
+		glVertex2f(0, TAM_ALIEN_Y);
+	}
+	glEnd();
+
 }
 
 void Alien::checkCollision(ShotManager *shotManager)

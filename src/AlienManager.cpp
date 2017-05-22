@@ -30,7 +30,6 @@ void AlienManager::update(ShotManager *shotManager) {
 void AlienManager::draw() {
 	unsigned int i;
 
-
 	for(i = 0; i < this->aliens.size(); i++) {
 		this->aliens[i].draw();
 	}

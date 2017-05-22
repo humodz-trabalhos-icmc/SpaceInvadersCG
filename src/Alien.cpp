@@ -55,13 +55,41 @@ void Alien::draw() {
 void Alien::model1()
 {
 	glColor3f(1.0, 0.0, 0.0);
-
 	glBegin(GL_QUADS);
 	{
-		glVertex2f(0, 0);
-		glVertex2f(TAM_ALIEN_X, 0);
-		glVertex2f(TAM_ALIEN_X, TAM_ALIEN_Y);
-		glVertex2f(0, TAM_ALIEN_Y);
+		glVertex2f(7.5, 0);
+		glVertex2f(10, 0);
+		glVertex2f(10, TAM_ALIEN_Y/2);
+		glVertex2f(7.5, TAM_ALIEN_Y/2);
+	}
+	glBegin(GL_QUADS);
+	{
+		glVertex2f(35, 0);
+		glVertex2f(32.5, 0);
+		glVertex2f(32.5, TAM_ALIEN_Y/2);
+		glVertex2f(35, TAM_ALIEN_Y/2);
+	}
+	glBegin(GL_QUADS);
+	{
+		glVertex2f(0, TAM_ALIEN_Y/2);
+		glVertex2f(15, 20);
+		glVertex2f(25, 20);
+		glVertex2f(40, TAM_ALIEN_Y/2);
+	}
+	glBegin(GL_QUADS);
+	{
+		glVertex2f(0, TAM_ALIEN_Y/2);
+		glVertex2f(15, 0);
+		glVertex2f(25, 0);
+		glVertex2f(40, TAM_ALIEN_Y/2);
+	}
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	{
+		glVertex2f(0, TAM_ALIEN_Y/2 + 1);
+		glVertex2f(0, TAM_ALIEN_Y/2 - 1);
+		glVertex2f(40, TAM_ALIEN_Y/2 - 1);
+		glVertex2f(40, TAM_ALIEN_Y/2 + 1);
 	}
 	glEnd();
 }

@@ -17,7 +17,7 @@ private:
 	void drawLeftSide();
 	void drawCenter();
 
-	int lives = 4
+	int lives = 4;
 	float pos_x = ORTHO_WIDTH / 2;
 	float pos_y = 5 + PLAYER_HEIGHT / 2;
 };

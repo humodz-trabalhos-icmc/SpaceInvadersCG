@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 #include <GL/glut.h>
 
 #include "globals.h"

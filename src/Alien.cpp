@@ -68,14 +68,63 @@ void Alien::model1()
 
 void Alien::model2()
 {
-	glColor3f(0.0, 1.0, 0.0);
+	// 40 por 20
+	glBegin(GL_TRIANGLES);
+	{
+		glColor3f(0.75, 0.75, 0.75);
+
+		glVertex2f(0, 10);
+		glVertex2f(10, 0);
+		glVertex2f(10, 10);
+
+		glVertex2f(30, 10);
+		glVertex2f(30, 0);
+		glVertex2f(40, 10);
+
+		glVertex2f(10, 5);
+		glVertex2f(10, 0);
+		glVertex2f(15, 2.5);
+
+		glVertex2f(25, 2.5);
+		glVertex2f(30, 0);
+		glVertex2f(30, 5);
+	}
+	glEnd();
 
 	glBegin(GL_QUADS);
 	{
-		glVertex2f(0, 0);
-		glVertex2f(TAM_ALIEN_X, 0);
-		glVertex2f(TAM_ALIEN_X, TAM_ALIEN_Y);
-		glVertex2f(0, TAM_ALIEN_Y);
+		glColor3f(0.0, 1.0, 0.0);
+
+		glVertex2f(0, 15);
+		glVertex2f(0, 10);
+		glVertex2f(15, 5);
+		glVertex2f(15, 20);
+
+		glVertex2f(15, 20);
+		glVertex2f(15, 5);
+		glVertex2f(25, 5);
+		glVertex2f(25, 20);
+
+		glVertex2f(25, 20);
+		glVertex2f(25, 5);
+		glVertex2f(40, 10);
+		glVertex2f(40, 15);
+
+
+	}
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+	{
+		glColor3f(0.0, 0.0, 0.0);
+
+		glVertex2f(10, 10);
+		glVertex2f(15, 10);
+		glVertex2f(10, 15);
+
+		glVertex2f(25, 10);
+		glVertex2f(30, 10);
+		glVertex2f(30, 15);
 	}
 	glEnd();
 

@@ -1,8 +1,9 @@
 #ifndef SHOT_H
 #define SHOT_H
-
+// enumeração que indica qual o tipo do tiro
 enum ShotType { PLAYER_SHOT, ALIEN_SHOT };
 
+//objeto que representa o tiro da nave (player ou alienigena)
 class Shot
 {
 public:
@@ -17,6 +18,7 @@ public:
 	// activate the shot and place it at (x, y)
 	void activate(float x, float y);
 
+	//getters das posições
 	float getX() { return pos_x; }
 	float getY() { return pos_y; }
 

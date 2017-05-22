@@ -1,19 +1,24 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
+// largura e altura da tela
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 400
 
+// medidas ortogonais
 #define ORTHO_LEFT  0.0
 #define ORTHO_RIGHT 599.0
 #define ORTHO_DOWN  0.0
 #define ORTHO_UP    399.0
 
+// tiros máximos do player e do alien
 #define PLAYER_SHOT_COUNT 1
 #define ALIEN_SHOT_COUNT 5
 
+// quantidade de frame para renderização
 #define FRAME_RATE 30
 
+// constantes ortogonais
 const int ORTHO_WIDTH  = ORTHO_RIGHT - ORTHO_LEFT + 1;
 const int ORTHO_HEIGHT = ORTHO_UP - ORTHO_DOWN + 1;
 const int FRAME_TIME_MS = 1000 / FRAME_RATE;

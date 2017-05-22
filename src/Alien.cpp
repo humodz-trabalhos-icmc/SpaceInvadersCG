@@ -6,7 +6,7 @@
 #include "Alien.h"
 
 
-
+// método que atualiza os objetos Alien (posição e checa por colisão)
 void Alien::update(ShotManager *shotManager) {
 
 	if(isActive())
@@ -37,7 +37,7 @@ void Alien::update(ShotManager *shotManager) {
 		}
 	}
 }
-
+// método que desenha naves de acordo com o modelo dela
 void Alien::draw() {
 
 	if (this->isActive()) {
@@ -51,7 +51,7 @@ void Alien::draw() {
 
 	}
 }
-
+// método para desenho do modelo 1
 void Alien::model1()
 {
 	glColor3f(1.0, 0.0, 0.0);
@@ -94,6 +94,7 @@ void Alien::model1()
 	glEnd();
 }
 
+// método de desenho do modelo 2 da nave alien
 void Alien::model2()
 {
 	// 40 por 20
@@ -157,7 +158,7 @@ void Alien::model2()
 	glEnd();
 
 }
-
+// método de desenho do modelo 3
 void Alien::model3()
 {
 	glColor3f(0.5, 0.5, 1.0);
@@ -187,16 +188,16 @@ void Alien::model3()
 	GLfloat twicePi = 2.0f * 3.1415;
 	int i;
 	glBegin(GL_LINE_LOOP);
-		for(i = 0; i <= 100;i++) { 
+		for(i = 0; i <= 100;i++) {
 			glVertex2f(
-			    20 + (2 * cos(i *  twicePi / 100)), 
+			    20 + (2 * cos(i *  twicePi / 100)),
 			    11.5 + (2* sin(i * twicePi / 100))
 			);
 		}
 	glEnd();
 
 }
-
+// método de colisão para o tiro do player na nave alien
 void Alien::checkCollision(ShotManager *shotManager)
 {
 	if(pos_y < 5)
@@ -224,10 +225,9 @@ void Alien::checkCollision(ShotManager *shotManager)
 	}
 }
 
+// método que faz o objeto Alien atirar (adiciona um novo shot via shotManager)
 void Alien::fire(ShotManager *shotManager)
 {
-
-// TODO: ver se um delay é realmente necessário
 
 	float shot_x = this->pos_x;
 	float shot_y = this->pos_y;

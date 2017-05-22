@@ -4,6 +4,8 @@
 #include "globals.h"
 #include "ShotManager.h"
 
+
+// objeto que representa a nave do Player
 class Ship
 {
 public:
@@ -17,7 +19,7 @@ private:
 	void drawLeftSide();
 	void drawCenter();
 
-	int lives = 4;
+	int lives = 4; // quantidade de vidas
 	float pos_x = ORTHO_WIDTH / 2;
 	float pos_y = 5 + PLAYER_HEIGHT / 2;
 };

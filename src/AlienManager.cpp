@@ -6,7 +6,7 @@
 #include "Alien.h"
 #include "globals.h"
 
-
+// atualiza o objeto Alien
 void AlienManager::update(ShotManager *shotManager) {
 	unsigned int i;
 
@@ -27,6 +27,8 @@ void AlienManager::update(ShotManager *shotManager) {
 		exit(0);
 	}
 }
+
+// reescreve o objeto draw
 void AlienManager::draw() {
 	unsigned int i;
 
@@ -35,6 +37,7 @@ void AlienManager::draw() {
 	}
 }
 
+// adiciona um novo alien a tela
 void AlienManager::newAlienTroop(float x, float y) {
 	//cria matrix 5x5 com os aliens
 	int i, j;

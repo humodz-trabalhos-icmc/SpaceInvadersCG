@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// objeto que gerencia os objetos Alien
 class AlienManager {
 
 	public:
@@ -13,7 +14,7 @@ class AlienManager {
 		void draw();
 		void update(ShotManager *shotManager);
 
-		vector<Alien> aliens;
+		vector<Alien> aliens; // vetor de aliens disponiveis
 };
 
 #endif

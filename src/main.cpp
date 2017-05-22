@@ -11,9 +11,11 @@
 #include "AlienManager.h"
 using namespace std;
 
-Ship player;
-ShotManager shotManager;
-AlienManager aliens;
+Ship player; // objeto global do player
+ShotManager shotManager; // objeto gloabl que gerencia os tiros das naves
+AlienManager aliens; // objeto global que gerencia os aliens
+
+// método que lida com o display / rendering
 void onDisplay(void)
 {
 	glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -26,7 +28,7 @@ void onDisplay(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	// Colocar todas as funcoes de .draw() aqui:
+	// desenhando os objetos
 	player.draw();
 	aliens.draw();
 	shotManager.draw();
@@ -34,9 +36,9 @@ void onDisplay(void)
 	glutSwapBuffers();
 }
 
+// método de redesenho pelo frame_time
 void onTimerTick(int step)
 {
-	// Colocar todas as funcoes de .update() aqui:
 	player.update(&shotManager);
 	aliens.update(&shotManager);
 	shotManager.update();
@@ -65,7 +67,7 @@ int main(int argc, char **argv)
 	Controller::registerCallbacks();
 	glutDisplayFunc(onDisplay);
 	glutTimerFunc(0, onTimerTick, 0);
-	glutMainLoop();
+	glutMainLoop(); //inicializa loop do jogo
 
 	return 0;
 }

@@ -5,6 +5,8 @@
 #include "Shot.h"
 #include "globals.h"
 
+
+//método que cria um novo tiro dado seu tipo e posição (x, y)
 void ShotManager::newShot(ShotType shot_type, float x, float y){
 	int i;
 	Shot sPlayer(PLAYER_SHOT);
@@ -42,7 +44,7 @@ void ShotManager::newShot(ShotType shot_type, float x, float y){
 					this->shotAlien[i].activate(x, y);
 	}
 }
-
+// método que desenha o tiro
 void ShotManager::draw() {
 	unsigned int i;
 
@@ -56,7 +58,7 @@ void ShotManager::draw() {
 		this->shotAlien[i].draw();
 	}
 }
-
+// método que atualiza os demais objetos me relação ao tiro
 void ShotManager::update() {
 	unsigned int i;
 

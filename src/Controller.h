@@ -10,6 +10,8 @@ enum Key { KEY_NONE, KEY_LEFT, KEY_RIGHT, KEY_FIRE, KEY_COUNT };
  * Event handlers are used to determine which keys are pressed
  */
 
+
+// objeto que representa o Controle da nave do Player
 class Controller
 {
 public:

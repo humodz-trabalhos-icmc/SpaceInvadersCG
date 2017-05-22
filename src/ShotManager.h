@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// objeto que gerencia o objeto shot (tiro)
 class ShotManager
 {
 public:
@@ -13,6 +14,7 @@ public:
 	void draw();
 	void update();
 
+	//vetores de tiros da nave do player e dos aliens
 	vector<Shot> shotPlayer;
 	vector<Shot> shotAlien;
 };

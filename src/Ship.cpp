@@ -6,12 +6,15 @@
 #include "Ship.h"
 #include "Controller.h"
 
+
+// método que atualiza a nave do player (colisão e posiçaõ)
 void Ship::update(ShotManager* shotManager)
 {
 	checkControls(shotManager);
 	checkCollision(shotManager);
 }
 
+// método que desenha o modelo da nave
 void Ship::draw()
 {
 	glMatrixMode(GL_MODELVIEW);
@@ -42,7 +45,7 @@ void Ship::draw()
 	glScalef(-1.0, 1.0, 1.0);
 	drawLeftSide();
 }
-
+// método que checa por movimentos do teclado
 void Ship::checkControls(ShotManager* shotManager)
 {
 	float delta_s = PLAYER_SPEED_MS * FRAME_TIME_MS;
@@ -79,7 +82,7 @@ void Ship::checkControls(ShotManager* shotManager)
 		gCtrl.reset(KEY_FIRE);
 	}
 }
-
+// método que checa por colisão (ponto a ponto)
 void Ship::checkCollision(ShotManager *shotManager)
 {
 	for (auto &shotAlien : shotManager->shotAlien) {
@@ -110,7 +113,7 @@ void Ship::checkCollision(ShotManager *shotManager)
 		exit(0);
 	}
 }
-
+// método que desenha as vidas da nave
 void Ship::drawLives()
 {
 	glColor3f(1.0, 0.0, 0.0);
@@ -128,7 +131,7 @@ void Ship::drawLives()
 		glEnd();
 	}
 }
-
+// método que desenha o lado esquerdo da nave
 void Ship::drawLeftSide()
 {
 
@@ -189,7 +192,7 @@ void Ship::drawLeftSide()
 	glEnd();
 */
 }
-
+// método que escreve o centro da nave player
 void Ship::drawCenter()
 {
 	glBegin(GL_QUADS);

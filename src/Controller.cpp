@@ -5,8 +5,10 @@
 #include "Shot.h"
 #include "Ship.h"
 
-Controller gCtrl;
+Controller gCtrl; // teclad od usuário
 
+
+// método que registra as callbacks
 void Controller::registerCallbacks()
 {
 	// If key repeat is true, keeping a key down will trigger onKeyPress every frame
@@ -15,6 +17,7 @@ void Controller::registerCallbacks()
 	glutKeyboardUpFunc(onKeyUp);
 }
 
+// método do evento no pressionar do teclado
 void Controller::onKeyPress(unsigned char ascii, int x, int y)
 {
 	// Suppress "unused variable" warnings
@@ -23,7 +26,7 @@ void Controller::onKeyPress(unsigned char ascii, int x, int y)
 	// Mark key as pressed (true)
 	gCtrl.setKeyPressed(ascii, true);
 }
-
+// método do evento quando a tecla é solta
 void Controller::onKeyUp(unsigned char ascii, int x, int y)
 {
 	// Suppress "unused variable" warnings
@@ -32,7 +35,7 @@ void Controller::onKeyUp(unsigned char ascii, int x, int y)
 	// Mark key as released (false)
 	gCtrl.setKeyPressed(ascii, false);
 }
-
+// método handler do evento da tecla pressionada
 void Controller::setKeyPressed(unsigned char ascii, bool state)
 {
 	Key key = KEY_NONE;
